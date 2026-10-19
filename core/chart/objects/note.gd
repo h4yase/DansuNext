@@ -1,5 +1,5 @@
 extends TimingObject
-class_name NoteData
+class_name Note
 
 enum NoteType {
     HIT,
@@ -12,5 +12,6 @@ enum NoteType {
 }
 
 var type: NoteType
-var time: int
+var timing: int
 var length: int = 0
+var animation: CharacterAnimation
