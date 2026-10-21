@@ -1,7 +1,15 @@
+extends GameObject
 class_name Rail
 
-var notes: Array[Note]
+var notes: Array[Note] = []
 var points: Array[RailPoint]
+
+
+func _init(rail_points: Array[RailPoint] = [], rail_notes: Array[Note] = []) -> void:
+    if rail_points.size() < 2:
+        return
+    points = rail_points
+    notes = rail_notes
 
 func sort_notes() -> void:
 	notes.sort_custom(func(a, b) -> bool: return a.timing < b.timing)

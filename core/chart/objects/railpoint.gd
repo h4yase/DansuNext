@@ -1,3 +1,4 @@
+extends GameObject
 class_name RailPoint
 
 var timing: int
