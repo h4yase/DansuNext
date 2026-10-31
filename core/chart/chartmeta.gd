@@ -6,6 +6,7 @@ var artist: String = ""
 var creator: String = ""
 var source: String = ""
 var tags: String = ""
+var rating: float = ""
 
 var min_bpm: float
 var max_bpm: float

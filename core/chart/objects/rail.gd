@@ -1,4 +1,3 @@
-extends GameObject
 class_name Rail
 
 var notes: Array[Note] = []

@@ -1,4 +1,3 @@
-extends GameObject
 class_name Note
 
 func _init(note_type: NoteType = NoteType.HIT, note_timing: int = 0, note_length: int = 0, note_animation: CharacterAnimation = CharacterAnimation.NONE) -> void:

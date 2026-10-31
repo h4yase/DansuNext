@@ -2,14 +2,22 @@ extends RefCounted
 class_name Editor
 
 var session: Session
-var inspecting_object: GameObject
+var inspecting_object: EditorObject
+var clipboard: EditorClipboard
+var selected_objects: Array[EditorObject]
 
-signal note_selected(note: Note)
-signal rail_selected(rail: Rail)
+# for inspector.
+signal selected(objs: Array[EditorObject])
+signal updated(obj: EditorObject)
 
-func select_note(note: Note) -> void:
-    inspecting_object = note
-    emit_signal("note_selected", note)
+func select(objs: Array[EditorObject]) -> void:
+    inspecting_object = objs[0]
+    emit_signal("selected", objs)
+
+func update(objs: Array[EditorObject]):
+    for obj in objs:
+        obj.update()
+        emit_signal("updated",obj)
 
 func add_new_note(note: Note, rail: Rail = session.current_rail, select: bool = false) -> Note:
     if rail:
@@ -25,14 +33,14 @@ func add_new_note(note: Note, rail: Rail = session.current_rail, select: bool = 
 func add_new_rail(rail: Rail, select: bool = false) -> Rail:
     session.chart_body.rails.append(rail)
     if select:
-        current_rail = rail
-        emit_signal("rail_selected", rail)
+        session.current_rail = rail
+        emit_signal("selected", rail)
     return rail
 
 func add_new_point(point: RailPoint, rail: Rail = session.current_rail, select: bool = false) -> RailPoint:
     if rail:
         session.chart_body.points.append(point)
         if select:
-            current_rail = rail
-            emit_signal("rail_selected", rail)
+            session.current_rail = rail
+            emit_signal("selected", point)
     return point
