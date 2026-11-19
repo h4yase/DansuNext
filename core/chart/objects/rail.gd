@@ -1,3 +1,4 @@
+extends ObjectData
 class_name Rail
 
 var notes: Array[Note] = []

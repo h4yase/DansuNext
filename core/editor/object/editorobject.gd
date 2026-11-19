@@ -5,4 +5,5 @@ class_name EditorObject
 @abstract func get_time() -> void
 @abstract func set_time() -> void
 @abstract func can_dupe(obj:EditorObject)
-var data
+@abstract func get_data() -> GameObjectData
+@abstract func set_data(data:GameObjectData) -> void

@@ -1,3 +1,4 @@
+extends ObjectData
 class_name Timing
 
 var _bpm: float

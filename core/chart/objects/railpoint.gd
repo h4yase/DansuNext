@@ -1,3 +1,4 @@
+extends ObjectData
 class_name RailPoint
 
 var timing: int
